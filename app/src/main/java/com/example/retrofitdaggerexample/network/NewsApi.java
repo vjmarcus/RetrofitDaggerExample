@@ -1,10 +1,9 @@
 package com.example.retrofitdaggerexample.network;
 
-import android.database.Observable;
-
 import com.example.retrofitdaggerexample.model.Post;
 import com.example.retrofitdaggerexample.model.StoryResponse;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.GET;
