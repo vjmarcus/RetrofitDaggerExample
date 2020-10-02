@@ -1,6 +1,9 @@
 package com.example.retrofitdaggerexample.network;
 
+import android.database.Observable;
+
 import com.example.retrofitdaggerexample.model.Post;
+import com.example.retrofitdaggerexample.model.StoryResponse;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -13,11 +16,11 @@ public interface NewsApi {
     public Call<Post> getPostWithID(@Path("id") int id);
 
 
-//    @GET("everything")
-//    Observable<StoryResponse> getPostsByDate(@Query("q") String key,
-//                                             @Query("from") String fromDate,
-//                                             @Query("to") String toDate,
-//                                             @Query("pageSize") int pageSize,
-//                                             @Query("language") String language,
-//                                             @Query("apiKey") String apiKey);
+    @GET("everything")
+    Observable<StoryResponse> getPostsByDate(@Query("q") String key,
+                                             @Query("from") String fromDate,
+                                             @Query("to") String toDate,
+                                             @Query("pageSize") int pageSize,
+                                             @Query("language") String language,
+                                             @Query("apiKey") String apiKey);
 }
