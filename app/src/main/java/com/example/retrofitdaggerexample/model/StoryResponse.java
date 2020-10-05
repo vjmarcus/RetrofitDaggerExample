@@ -10,7 +10,7 @@ import java.util.Objects;
 public class StoryResponse implements Serializable {
     @SerializedName("articles")
     @Expose
-    public List<Story> articles;
+    public List<Story> articles = null;
 
     public StoryResponse(List<Story> articles) {
         this.articles = articles;

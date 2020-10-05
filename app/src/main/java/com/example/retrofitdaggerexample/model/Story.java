@@ -1,14 +1,22 @@
 package com.example.retrofitdaggerexample.model;
 
 
+import androidx.room.Embedded;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity(tableName = "story_table")
 public class Story implements Serializable {
+    @PrimaryKey(autoGenerate = true)
     private int id;
+    @Embedded
     @SerializedName("source")
     @Expose
     public Source source;
@@ -28,6 +36,7 @@ public class Story implements Serializable {
     @Expose
     public String publishedAt;
 
+    @Ignore
     public Story(Source source, String author, String title, String description, String urlToImage, String publishedAt) {
         this.source = source;
         this.author = author;
