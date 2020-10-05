@@ -1,6 +1,7 @@
 package com.example.retrofitdaggerexample;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -39,27 +40,16 @@ public class MainActivity extends AppCompatActivity {
     @Inject Retrofit retrofit;
     @Inject NewsApi newsApi;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
         setContentView(R.layout.activity_main);
+        App.getAppComponent().injectMainActivity(this);
         textView = findViewById(R.id.textView);
         textView.setText("Hello");
-        App.getAppComponent().injectMainActivity(this);
-//        newsApi.getPostWithID(1).enqueue(new Callback<Post>() {
-//            @Override
-//            public void onResponse(Call<Post> call, Response<Post> response) {
-//                Post post = response.body();
-//                Log.d(TAG, "onResponse: " + post.getTitle());
-//                textView.setText(post.getTitle());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Post> call, Throwable t) {
-//
-//            }
-//        });
+
         Observable<StoryResponse> observable = newsApi.getPostsByDate(Constants.KEY, Constants.getCurrentDate(),
                 Constants.getCurrentDate(), 20, "en", Constants.API_KEY);
         observable

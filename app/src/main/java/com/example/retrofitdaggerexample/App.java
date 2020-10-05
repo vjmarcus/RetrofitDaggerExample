@@ -5,7 +5,6 @@ import android.util.Log;
 
 import com.example.retrofitdaggerexample.di.components.AppComponent;
 import com.example.retrofitdaggerexample.di.components.DaggerAppComponent;
-import com.example.retrofitdaggerexample.di.modules.NewsApiModule;
 import com.example.retrofitdaggerexample.utils.Constants;
 
 
@@ -18,7 +17,6 @@ public class App extends Application {
         super.onCreate();
         Log.d(Constants.TAG, "onCreate: App ");
         appComponent = DaggerAppComponent.builder()
-                .newsApiModule(new NewsApiModule())
                 .build();
     }
 
